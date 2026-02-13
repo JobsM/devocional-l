@@ -1,0 +1,221 @@
+/* --- VARIÁVEIS (CORES) --- */
+:root {
+    --primary: #fcde7b;
+    --bg-dark-start: #0f0f0f;
+    --bg-dark-end: #232526;
+    --text-light: #ffffff;
+    --text-gray: #cccccc;
+    --container-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* --- RESET GLOBAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- CORPO DA PÁGINA --- */
+body {
+    background: linear-gradient(135deg, var(--bg-dark-start), var(--bg-dark-end));
+    color: var(--text-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+
+/* --- CONTAINER PRINCIPAL (AGORA MAIS COMPACTO) --- */
+.container {
+    max-width: 480px;  /* Antes 600px - diminuiu */
+    width: 92%;
+    margin: 0 auto;
+    background: var(--container-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;      /* Reduzi o padding */
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+
+/* --- HEADER (TÍTULOS) --- */
+header {
+    text-align: center;
+    padding: 10px 0 20px;
+}
+
+h1 {
+    font-size: 1.9rem;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+h1 span {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+/* --- VÍDEO VERTICAL (CORREÇÃO DEFINITIVA) --- */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    /* 👇 ESSA É A PROPORÇÃO CORRETA PARA VÍDEO VERTICAL */
+    aspect-ratio: 9 / 16;
+    /* 👇 NÃO USAR height fixa. O aspect-ratio resolve */
+    
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-bottom: 25px;
+    background: #000;
+    border: 1px solid var(--primary);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* 
+   ⚠️ EXPLICAÇÃO DO QUE DEIXAVA ACHATADO:
+   
+   Antes você tinha:
+   - Um container com aspect-ratio 9/16 (correto)
+   - Mas o iframe recebia width=100% e height=100% (correto)
+   
+   O PROBLEMA ESTAVA NO VÍDEO DENTRO DO IFRAME:
+   O Google Drive entrega vídeo no formato ORIGINAL.
+   Se você gravou HORIZONTAL, ele fica HORIZONTAL dentro do container 9/16.
+   
+   SOLUÇÃO: Gravar o vídeo na VERTICAL (9/16) ou 1080x1920.
+   O código CSS está PERFEITO. O problema é o arquivo de vídeo.
+*/
+
+/* --- BENEFÍCIOS --- */
+.benefits {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary);
+    margin-bottom: 30px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.benefit-item i {
+    color: var(--primary);
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+/* --- PROVA SOCIAL --- */
+.reviews {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.stars {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.testimonial-box {
+     background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px;        /* Reduzi */
+    border-radius: 8px;
+    font-style: italic;
+    font-size: 0.85rem;   /* Reduzi */
+    color: var(--text-gray);
+}
+
+.testimonial-author {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-size: 0.8rem;
+    color: var(--primary);
+}
+
+/* --- BOTÃO (CTA) --- */
+.btn-wrapper {
+    text-align: center;
+    margin: 35px 0;
+}
+
+.btn-cta {
+    background: linear-gradient(45deg, #d4af37, #f1c40f);
+    color: #000;
+    padding: 20px 35px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    display: inline-block;
+    box-shadow: 0 5px 25px rgba(212, 175, 55, 0.3);
+    transition: transform 0.2s;
+    animation: pulse 2s infinite;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-cta:hover {
+    transform: scale(1.03);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+/* --- RODAPÉ DE SEGURANÇA --- */
+.security {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    opacity: 0.7;
+}
+
+.security div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* --- COPYRIGHT --- */
+.copyright {
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 15px;
+}
